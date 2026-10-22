@@ -1,0 +1,15 @@
+{
+  "total_records_in_scope": 8459600,
+  "distinct_cases": 8458992,
+  "first_year": 2001,
+  "last_full_year": 2024,
+  "incident_change_pct": -46.56826735311608,
+  "first_arrest_pct": 29.210109901868186,
+  "last_arrest_pct": 13.825399453915978,
+  "city_slope_2010_2024": -8468.335714285735,
+  "districts_positive_slope": 1,
+  "districts_negative_slope": 21,
+  "districts_complete": 22,
+  "summer_relative_intensity": 1.0857716396525356,
+  "winter_relative_intensity": 0.9032179871566033
+}

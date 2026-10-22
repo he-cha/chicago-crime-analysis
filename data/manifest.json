@@ -1,0 +1,66 @@
+{
+  "endpoint": "https://data.cityofchicago.org/resource/ijzp-q8t2.json",
+  "date_filter": "date >= '2001-01-01T00:00:00' AND date < '2025-11-24T00:00:00'",
+  "started_utc": "2026-10-22T20:00:06.103720+00:00",
+  "queries": {
+    "annual": {
+      "params": {
+        "$where": "date >= '2001-01-01T00:00:00' AND date < '2025-11-24T00:00:00'",
+        "$limit": 50000,
+        "$select": "year, count(*) AS incidents, sum(case(arrest = true, 1, true, 0)) AS arrests",
+        "$group": "year",
+        "$order": "year"
+      },
+      "returned_rows": 25,
+      "retrieved_utc": "2026-10-22T20:00:24.600065+00:00",
+      "sha256": "b86eea8abbf54602e74412dc5d004875a94ec25673ca04cb05480e4165e81047"
+    },
+    "monthly": {
+      "params": {
+        "$where": "date >= '2001-01-01T00:00:00' AND date < '2025-11-24T00:00:00'",
+        "$limit": 50000,
+        "$select": "year, date_extract_m(date) AS month, count(*) AS incidents, sum(case(arrest = true, 1, true, 0)) AS arrests",
+        "$group": "year, month",
+        "$order": "year, month"
+      },
+      "returned_rows": 299,
+      "retrieved_utc": "2026-10-22T20:00:49.557993+00:00",
+      "sha256": "2e1fa34a8a897d91a293683e5b4e2f8133a8d96a3ec09f574fac302f4340ae57"
+    },
+    "district_annual": {
+      "params": {
+        "$where": "date >= '2001-01-01T00:00:00' AND date < '2025-11-24T00:00:00'",
+        "$limit": 50000,
+        "$select": "year, district, count(*) AS incidents, sum(case(arrest = true, 1, true, 0)) AS arrests",
+        "$group": "year, district",
+        "$order": "year, district"
+      },
+      "returned_rows": 610,
+      "retrieved_utc": "2026-10-22T20:01:07.302254+00:00",
+      "sha256": "620545fd62e9fdfede1daa94d1961a0522df5b8b3185ce41695c4c00f4d2815e"
+    },
+    "category_annual": {
+      "params": {
+        "$where": "date >= '2001-01-01T00:00:00' AND date < '2025-11-24T00:00:00'",
+        "$limit": 50000,
+        "$select": "year, primary_type, count(*) AS incidents, sum(case(arrest = true, 1, true, 0)) AS arrests",
+        "$group": "year, primary_type",
+        "$order": "year, primary_type"
+      },
+      "returned_rows": 775,
+      "retrieved_utc": "2026-10-22T20:01:18.510895+00:00",
+      "sha256": "0c08417bf7786e8a1e25a1a66a22dc148a87b6359510c242ec22d91e4c8f1f71"
+    },
+    "source_check": {
+      "params": {
+        "$where": "date >= '2001-01-01T00:00:00' AND date < '2025-11-24T00:00:00'",
+        "$limit": 50000,
+        "$select": "count(*) AS records, count(distinct case_number) AS distinct_cases, min(date) AS earliest, max(date) AS latest"
+      },
+      "returned_rows": 1,
+      "retrieved_utc": "2026-10-22T20:01:28.950579+00:00",
+      "sha256": "1a2ca37dec5c90c511ce4549f2f80525d1c68a1b63e96744afb2fee7eb6f8225"
+    }
+  },
+  "completed_utc": "2026-10-22T20:01:28.950622+00:00"
+}
